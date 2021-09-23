@@ -47,7 +47,7 @@ class PhpipamAuthenticator(DNSAuthenticator):
         self.credentials = None
 
     @classmethod
-    def add_parser_arguments(cls, add, default_propagation_seconds=90):
+    def add_parser_arguments(cls, add, default_propagation_seconds=30):
         super(PhpipamAuthenticator, cls).add_parser_arguments(
             add, default_propagation_seconds)
         add("credentials", help="Phpipam credentials INI file.")
