@@ -25,7 +25,7 @@ setup(
     ],
     entry_points={
         "certbot.plugins": [
-            "auth = certbot_iconik_phpipam:PhpipamAuthenticator",
+            "iconik-phpipam = certbot_iconik_phpipam:PhpipamAuthenticator",
         ],
     },
     classifiers=[

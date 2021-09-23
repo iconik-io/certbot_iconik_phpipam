@@ -3,6 +3,17 @@
 This allows automatic completion of `Certbot's <https://github.com/certbot/certbot>`_
 DNS01 challange for domains managed via `Phpipam <https://phpipam.net/>`_ DNS.
 
+## iconik phpipam customization
+
+:warning:
+
+This plugin is built for the internal use at iconik. Our phpipam
+instance has a custom field on each address called `acme_challenge`
+which gets propagated to our DNS as an entry called
+`_acme-challenge.$HOSTNAME` and this plugin simply updates this
+field. If your phpipam setup doesn't have anything similar this plugin
+is likely going to be of limited use to you.
+
 ## Installing
 
 ```
@@ -28,11 +39,11 @@ To use the plugin you need to provide a credentials file
 The credentials file must have the following format:
 
 ```
-certbot_iconik_phpipam:auth_username = admin
-certbot_iconik_phpipam:auth_password = password
-certbot_iconik_phpipam:auth_endpoint = https://phpipam/iconik_phpipam
-certbot_iconik_phpipam:api_id = app_id
-certbot_iconik_phpipam:auth_verify = True
+iconik_phpipam_username = admin
+iconik_phpipam_password = password
+iconik_phpipam_endpoint = https://phpipam
+iconik_phpipam_appid = app_id
+iconik_phpipam_verify = True
 ```
 
 For safety reasons the file must not be world readable. You can solve this by
@@ -46,8 +57,8 @@ Then you can run `certbot` using:
 
 ```
 $ sudo certbot certonly \
-    --authenticator certbot-iconik-phpipam:auth \
-    --certbot-iconik-phpipam:auth-credentials credentials.ini \
+    --authenticator iconik-phpipam \
+    --iconik-phpipam-credentials credentials.ini \
     -d domain.com
 ```
 
