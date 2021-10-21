@@ -39,7 +39,7 @@ class PhpipamAuthenticator(DNSAuthenticator):
     description = __doc__.strip().split("\n", 1)[0]
 
     #: TTL for the validation TXT record
-    ttl = 30
+    ttl = 60
 
     def __init__(self, *args, **kwargs):
         super(PhpipamAuthenticator, self).__init__(*args, **kwargs)
